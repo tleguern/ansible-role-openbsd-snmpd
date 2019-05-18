@@ -1,0 +1,6 @@
+__snmpd_user: _snmpd
+__snmpd_group: _snmpd
+__snmpd_service: snmpd
+__snmpd_package: ""
+__snmpd_conf_dir: /etc
+__snmpd_bin: /usr/sbin/snmpd

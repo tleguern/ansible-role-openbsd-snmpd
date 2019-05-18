@@ -1,0 +1,8 @@
+snmpd_user: "{{ __snmpd_user }}"
+snmpd_group: "{{ __snmpd_group }}"
+snmpd_service: "{{ __snmpd_service }}"
+snmpd_package: "{{ __snmpd_package }}"
+snmpd_conf_dir: "{{ __snmpd_conf_dir }}"
+snmpd_conf_file: "{{ snmpd_conf_dir }}/snmpd.conf"
+snmpd_bin: "{{ __snmpd_bin }}"
+snmpd_flags: ""

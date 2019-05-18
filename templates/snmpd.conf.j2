@@ -1,0 +1,31 @@
+# Managed by ansible
+
+{% if snmpd_global is defined %}
+{% if snmpd_global.system_contact is defined %}
+system contact "{{ snmpd_global.system_contact }}"
+{% endif -%}
+{% if snmpd_global.system_description is defined %}
+system description "{{ snmpd_global.system_description }}"
+{% endif -%}
+{% if snmpd_global.system_location is defined %}
+system location "{{ snmpd_global.system_location }}"
+{% endif -%}
+{% if snmpd_global.system_services is defined %}
+system services {{ snmpd_global.system_services }}
+{% endif -%}
+
+{% if snmpd_global.filter_routes is defined %}
+filter-routes {{ snmpd_global.filter_routes }}
+{% endif -%}
+{% if snmpd_global.listen is defined %}
+{% for listen in snmpd_global.listen %}
+listen on {{ listen.address }} {{ listen.proto }}
+{% endfor %}
+{% endif -%}
+{% endif -%}
+
+seclevel enc
+
+{% for user in snmpd_users %}
+user {{ user.name }} authkey {{ user.authkey }} auth hmac-sha1 enckey {{ user.enckey }} enc aes
+{% endfor %}

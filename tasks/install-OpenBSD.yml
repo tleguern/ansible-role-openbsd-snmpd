@@ -1,0 +1,8 @@
+---
+- name: Enable snmpd
+  service:
+    name: "{{ snmpd_service }}"
+    arguments: "{{ snmpd_flags }}"
+    enabled: yes
+  notify:
+    - Restart snmpd
