@@ -1,9 +1,9 @@
 ---
-- include_vars: "{{ ansible_os_family }}.yml"
-- include: "install-{{ ansible_os_family }}.yml"
+- ansible.builtin.include_vars: "{{ ansible_os_family }}.yml"
+- ansible.builtin.include_tasks: "install-{{ ansible_os_family }}.yml"
 
 - name: Create snmpd.conf
-  template:
+  ansible.builtin.template:
     src: snmpd.conf.j2
     dest: "{{ snmpd_conf_file }}"
     validate: "{{ snmpd_bin }} -n -f %s"
@@ -11,6 +11,6 @@
   notify: Restart snmpd
 
 - name: Ensure snmpd is started
-  service:
+  ansible.builtin.service:
     name: "{{ snmpd_service }}"
     state: started
